@@ -1,0 +1,48 @@
+*{
+    font-family: sans-serif;
+}
+
+#topBar {
+    height: auto;
+    min-height: 50px;
+    grid-area: head;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+#navBarr {
+    grid-area: nav;
+}
+
+
+
+#content {
+    grid-area: art;
+    min-height: 600px;
+    height: auto;
+    background-color: #555;
+    color: white;
+    padding: 10px;
+}
+
+#footer {
+    grid-area: foot;
+    background-color: #666;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    height: auto;
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
+        grid-template-areas:
+            'nav art art'
+            'foot foot foot'
+        ;
+    }
+}
