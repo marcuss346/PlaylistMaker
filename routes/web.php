@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/newPlaylists", [PlaylistController::class, "store"])->name("storePlaylist");
     Route::get("/editPlaylist/{id}", [PlaylistController::class, "edit"])->name("editPlaylist");
     Route::put("/editPlaylist/{id}", [PlaylistController::class, "update"])->name("updatePlaylist");
+    Route::delete("/deletePlaylist/{id}", [PlaylistController::class, "destroy"])->name("deletePlaylist");
 
     Route::get("/artists", [ArtistController::class, "index"])->name("artists");
     Route::get("/newArtist", [ArtistController::class, "create"])->name("newArtist");

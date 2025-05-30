@@ -27,6 +27,7 @@
             
             <button type="submit">Add Artist</button>
         </form>
+        
         <p>Go back to <a href="{{ route('artists') }}">All Artists</a></p>
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -38,6 +39,7 @@
             </div>
         @endif
     </div>
+
     <div id="footer">
         <x-footer />
     </div>

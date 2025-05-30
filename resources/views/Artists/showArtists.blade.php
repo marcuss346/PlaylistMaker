@@ -38,7 +38,7 @@
             </tbody>
 
         </table>
-        <h2><a href="{{route('newArtist')}}">Add a new Artist</h2>
+        <h2><a href="{{route('newArtist')}}">Add a new Artist</a></h2>
     </div>
     <div id="footer">
         <x-footer />

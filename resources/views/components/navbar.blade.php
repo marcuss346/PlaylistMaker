@@ -1,7 +1,7 @@
 <nav class="bg-gray-800 p-4 text-white">
     <div class="container mx-auto flex justify-between" id="navBar">
-        <p class="main">Glasbeni Povezovalec</p>
-        <ul class="flex space-x-4">
+        <p class="main">Music connector</p>
+        <ul id="as">
             <li><a href="{{route('publicPlaylists')}}" class="underline">Public Playlists</a></li>
             @auth
                 <li><a href="{{route('dashboard')}}" class="underline">My Profile</a></li>
@@ -38,7 +38,7 @@
     grid-area: nav;
     background-color: #444;
     color: white;
-    padding: 10px;
+    padding: 40px;
     text-align: center;
 }
 
@@ -53,8 +53,8 @@
 }
 
 li:hover {
-    text-decoration: underline;
     color: red;
+    text-decoration: underline;
 }
 
 li{

@@ -133,6 +133,13 @@ class PlaylistController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $playlist = Playlist::findOrFail($id);
+        if (Auth::user()->id !== $playlist->user_id) {
+            return redirect()->route('publicPlaylists')->withErrors(['error' => 'You do not have permission to delete this playlist.']);
+        }
+
+        $playlist->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Playlist deleted successfully!');
     }
 }

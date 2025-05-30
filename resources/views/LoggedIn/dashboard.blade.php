@@ -12,27 +12,40 @@
     </div>
     <div id="content">
         
-        <h1>Welcome to the Dashboard</h1>
-        <p>You are logged in!</p>
-        <p>Here are your details:</p>
-        <ul>
-            <li>Name: {{ Auth::user() -> name }}</li>
-            <li>Email: {{ Auth::user() -> email}}</li>
-        </ul>
+        <h1>Welcome, {{ Auth::user()->name }}!</h1>
+        <p>Here you can manage your playlists.</p>
 
         <p>Here are your playlists:</p>
-        <ul>
-            @foreach ($playlists as $playlist)
-                <li>
-                    <a href="{{ route('viewPlaylist', ['id' => $playlist->id]) }}">{{ $playlist->name }}</a>
-                    @if ($playlist->is_public)
-                        <span>(Public)</span>
-                    @else
-                        <span>(Private)</span>
-                    @endif
-                </li>
-            @endforeach
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Playlist Name</th>
+                    <th>Publicity</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Auth::user()->playlists as $playlist)
+                    <tr>
+                        <td>{{ $playlist->name }}</td>
+                        <td>@if($playlist->is_public)
+                                Public
+                            @else
+                                Private
+                            @endif
+                        </td>
+                        <td>
+                            <form action="{{ route('deletePlaylist', $playlist->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete</button>
+                                <a href="{{ route('viewPlaylist', $playlist->id) }}">View</a>
+                            </form>
+                            
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
     <div id="footer">
         <x-footer />
@@ -40,3 +53,20 @@
 
 </body>
 </html>
+
+<style>
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: black;
+    }
+
+</style>
