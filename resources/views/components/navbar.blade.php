@@ -1,12 +1,12 @@
 <nav class="bg-gray-800 p-4 text-white">
     <div class="container mx-auto flex justify-between" id="navBar">
-        <a href="" class="font-bold">MyApp</a>
+        <p class="main">Glasbeni Povezovalec</p>
         <ul class="flex space-x-4">
-            <li><a href="{{route('publicPlaylists')}}" class="hover:underline">Public Playlists</a></li>
+            <li><a href="{{route('publicPlaylists')}}" class="underline">Public Playlists</a></li>
             @auth
-                <li><a href="{{route('dashboard')}}" class="hover:underline">My Profile</a></li>
-                <li><a href="{{route('artists')}}" class="hover:underline">Artists</a></li>
-                <li><a href="{{route('songs.songs')}}" class="hover:underline">Songs</a></li>
+                <li><a href="{{route('dashboard')}}" class="underline">My Profile</a></li>
+                <li><a href="{{route('artists')}}" class="underline">Artists</a></li>
+                <li><a href="{{route('songs.songs')}}" class="underline">Songs</a></li>
             @endauth
 
             @guest
@@ -14,6 +14,9 @@
             @endguest
 
             @auth
+                <li>
+                    <a href="{{ route('createPlaylist') }}" class="hover:underline">Create Playlist</a>
+                </li>
                 <li>
                    <a href="*"
                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -31,7 +34,7 @@
 
 <style>
    #navBar {
-    height: 200px;
+    height: auto;
     grid-area: nav;
     background-color: #444;
     color: white;
@@ -47,5 +50,18 @@
 #navBar a {
     text-decoration: none;
     color: white;
+}
+
+li:hover {
+    text-decoration: underline;
+    color: red;
+}
+
+li{
+    padding: 5px;
+}
+
+.main{
+    font: bold 2em Arial, sans-serif;
 }
 </style>

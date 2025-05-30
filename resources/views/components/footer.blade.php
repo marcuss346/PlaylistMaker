@@ -1,5 +1,5 @@
 <div id="footer" class="footer">
-      <p>Glasbeni povezovalec &copy; 2025 by Mark Ilovar</p>
+      <p>Glasbeni povezovalec MVC verzija &copy; 2025 by Mark Ilovar</p>
 </div>
 
 <style>
