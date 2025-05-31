@@ -52,7 +52,9 @@
     color: white;
 }
 
-li:hover {
+
+
+#navBar a:hover {
     color: red;
     text-decoration: underline;
 }

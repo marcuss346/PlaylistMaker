@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/songs", [SongsController::class, "index"])->name("songs.songs");
     Route::get("/newSong", [SongsController::class, "create"])->name("songs.create");
     Route::post("/newSong", [SongsController::class, "store"])->name("songs.store");
+    Route::delete("/deleteSong/{id}", [SongsController::class, "destroy"])->name("songs.delete");
 
     Route::post("/logout", [UserController::class, "logout"])->name("logout");
 

@@ -26,9 +26,13 @@
                 </ul>
             @endif
         </div>
+
+        <hr />
+
         <p><a href="{{ route('dashboard') }}">Back to your account</a></p>  
         @if ($errors->any())
-            <div>
+            <hr />
+            <div id ="errorMessages">
                 <h2>Errors:</h2>
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -43,3 +47,12 @@
     </div>
 </body>
 </html>
+
+<style>
+    #errorMessages * {
+        color: red;
+    }
+    #content li{
+        padding: 10px;
+    }
+</style>

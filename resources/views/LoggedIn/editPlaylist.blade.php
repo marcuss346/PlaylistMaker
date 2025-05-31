@@ -11,7 +11,7 @@
         <x-navbar />
     </div>
     <div id="content">
-    
+        <h1>Edit Playlist</h1>
         <form action="{{ route('updatePlaylist', $playlist->id) }}" method="POST">
             @csrf
             @method('PUT')

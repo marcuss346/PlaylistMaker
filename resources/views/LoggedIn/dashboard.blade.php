@@ -35,12 +35,14 @@
                             @endif
                         </td>
                         <td>
-                            <form action="{{ route('deletePlaylist', $playlist->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Delete</button>
-                                <a href="{{ route('viewPlaylist', $playlist->id) }}">View</a>
-                            </form>
+                            <div>
+                                <form action="{{ route('deletePlaylist', $playlist->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="rounded-button">Delete</button>
+                                    <button type="button" class="rounded-button2" onclick="window.location.href='{{ route('editPlaylist', $playlist->id) }}'">Edit</button>
+                                </form>
+                            </div>
                             
                     </tr>
                 @endforeach
@@ -68,5 +70,40 @@
     th {
         background-color: black;
     }
+
+    .rounded-button {
+      background: linear-gradient(135deg,rgb(236, 13, 13),rgb(176, 4, 4));
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 13px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .rounded-button:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .rounded-button2 {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 13px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .rounded-button2:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
 
 </style>

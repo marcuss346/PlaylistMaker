@@ -21,6 +21,7 @@
 
     
     <a href="{{ route('publicPlaylists') }}">Back to public Playlist List</a>
+    |
     <a href="{{ route('editPlaylist', $playlist->id) }}">Edit Playlist</a>
 
     </div>

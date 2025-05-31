@@ -82,6 +82,9 @@ class SongsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $song = Song::findOrFail($id);
+        $song->delete();
+
+        return redirect()->route('songs.songs')->with('success', 'Song deleted successfully!');
     }
 }
