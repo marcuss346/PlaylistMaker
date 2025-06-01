@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Models\Playlist;
+use App\Models\playlist;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Song;
@@ -23,7 +23,7 @@ class PlaylistController extends Controller
 
     public function publicPlaylists()
     {
-       $playlists = Playlist::where('is_public', true)->get();
+       $playlists = playlist::where('is_public', true)->get();
         return view('publicPlaylists', compact('playlists'));
     }
 
@@ -45,7 +45,7 @@ class PlaylistController extends Controller
             'public' => 'boolean',
         ]);
 
-        $playlist = Playlist::create([
+        $playlist = playlist::create([
             'name' => $request->input('name'),
             'user_id' => auth()->id(),
             'is_public' => $request->input('public', false),
@@ -86,7 +86,7 @@ class PlaylistController extends Controller
     public function edit(string $id)
     {
 
-        $playlist = Playlist::findOrFail($id);
+        $playlist = playlist::findOrFail($id);
         if (Auth::user()->id !== $playlist->user_id) {
             return redirect()->route('publicPlaylists')->withErrors(['error' => 'You do not have permission to edit this playlist.']);
         }
@@ -109,7 +109,7 @@ class PlaylistController extends Controller
             'songs' => 'array',
         ]);
 
-        $playlist = Playlist::findOrFail($id);
+        $playlist = playlist::findOrFail($id);
         if (Auth::user()->id !== $playlist->user_id) {
             return redirect()->route('publcPlaylists')->withErrors(['error' => 'You do not have permission to update this playlist.']);
         }
