@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    @vite(['resources/css/layout.css'])
+    @vite('resources/css/layout.css')
 </head>
 <body>
     <div id="navBarr">
         <x-navbar />
     </div>
-    <div id="content">
+    <div id="content" class="content">
         
         <h1>Welcome, {{ Auth::user()->name }}!</h1>
         <p>Here you can manage your playlists.</p>
@@ -36,12 +36,18 @@
                         </td>
                         <td>
                             <div>
-                                <form action="{{ route('deletePlaylist', $playlist->id) }}" method="POST">
+                                <form action="{{ route('deletePlaylist', $playlist->id) }}"  method="POST" onsubmit="return confirms('{{$playlist->name }}')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="rounded-button">Delete</button>
                                     <button type="button" class="rounded-button2" onclick="window.location.href='{{ route('editPlaylist', $playlist->id) }}'">Edit</button>
                                 </form>
+                                <script>
+                                    function confirms(playlistName) {
+                                        return confirm('Are you sure you want to delete the playlist: ' + playlistName + '?');
+                                    }
+                                </script>
+                                
                             </div>
                             
                     </tr>
@@ -57,6 +63,8 @@
 </html>
 
 <style>
+
+
     
     table {
         width: 100%;

@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.5
+    container_name: mariadb
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: markoparko
+      MYSQL_ROOT_PASSWORD: skritogeslo123
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  artisan:
+    build:
+      context: .
+    volumes:
+      - .:/var/www
+    entrypoint: ["php", "/var/www/artisan"]
+    depends_on:
+      - app
+
+volumes:
+  dbdata:

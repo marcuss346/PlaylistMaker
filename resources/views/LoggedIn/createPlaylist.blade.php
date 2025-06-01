@@ -10,7 +10,7 @@
     <div id="navBarr">
         <x-navbar />
     </div>
-    <div id="content">
+    <div id="content" class="content">
         <form method="POST" action="{{ route('createPlaylist') }}">
             @csrf
             <label for="name">Playlist Name:</label>
@@ -37,3 +37,61 @@
     </div>
 </body>
 </html>
+
+<style>
+.content{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: #f0f0f0;
+}
+form {
+  background-color: #333;
+  padding: 2em;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+label {
+  display: block;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.3em;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+  margin-top: 0.5em;
+  transform: scale(1.2);
+}
+
+input[type="submit"],
+button {
+  margin-top: 1.5em;
+  width: 100%;
+  padding: 0.6em;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  background-color: #ddd;
+}
+</style>

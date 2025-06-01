@@ -28,11 +28,16 @@
                         <td>{{ $artist->country }}</td>
                         <td>{{ $artist->birth_date }}</td>
                         <td>
-                            <form action="{{ route('deleteArtist', ['id' => $artist->id]) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('deleteArtist', ['id' => $artist->id]) }}" method="POST" style="display:inline;" onsubmit="return confirms('{{ $artist->name }}')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="rounded-button">Delete</button>
                             </form>
+                            <script>
+                                    function confirms(playlistName) {
+                                        return confirm('Are you sure you want to delete the artist: ' + playlistName + '? THIS WILL DELETE ALL SONGS ASSOCIATED WITH THIS ARTIST AND SONGS WILL BE REMOVED FROM PLAYLISTS!');
+                                    }
+                                </script>
                     </tr>
                 @endforeach
             </tbody>

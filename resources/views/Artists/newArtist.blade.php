@@ -10,7 +10,7 @@
     <div id="navBarr">
         <x-navbar />
     </div>
-   <div id="content">
+   <div id="content" class="content">
         <h1>Add a new Artist</h1>
         <form action="{{ route('newArtist') }}" method="POST">
             @csrf
@@ -45,3 +45,55 @@
     </div>
 </body>
 </html>
+
+<style>
+.content{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+form {
+  background-color: #333;
+  padding: 2em;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+label {
+  display: block;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.3em;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 1.5em;
+  width: 100%;
+  padding: 0.6em;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+</style>
